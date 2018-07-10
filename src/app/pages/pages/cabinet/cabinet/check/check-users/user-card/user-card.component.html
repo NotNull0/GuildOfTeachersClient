@@ -1,0 +1,14 @@
+<div class="cont">
+  <figure>
+    <img src="{{user.image|ImgPipe}}" alt="{{user.name+' '+user.lastname}}">
+  </figure>
+  <div class="content d-flex flex-column align-items-center justify-content-start">
+    <h1 class="text-center w-100">{{user.lastname+' '+user.name+' '+user.surname}}</h1>
+    <input *ngFor="let inc of user.specializations;let i=index" type="text" [(ngModel)]="user.specializations[i].name" [value]="user.specializations[i].name">
+    <input type="text" [(ngModel)]="user.placeOfWork.name" [value]="user.placeOfWork.name" >
+    <label class="d-flex justify-content-center mt-4 mb-4 w-100 align-items-center" style="font-family: OpenSans; font-size: 18px; line-height: 24px;">
+    <input type="checkbox" #chModerator style="width: auto" class="mr-4"> Модератор
+    </label>
+    <button (click)="send(chModerator)">Підтвердити</button>
+  </div>
+</div>

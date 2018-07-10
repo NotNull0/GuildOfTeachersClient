@@ -1,0 +1,25 @@
+<div class=" heading row d-flex justify-content-start flex-column borderClass">
+  <h2>ГОЛОВНІ СТАТТІ</h2>
+  <h6>По обговоренню за місяць</h6>
+</div>
+<div id="scroll" class="row d-md-block ml-auto mr-auto  popular" >
+  <app-popular-article *ngFor="let one of popularArticles" [popularArticle]="one" class="col-12"></app-popular-article>
+</div>
+<div class="row content mt-4 mb-4">
+  <div class=" col-md-9 p-0 artick-cont ">
+    <app-artickle-container-one (deleteArt)="delete($event)" *ngFor="let two of articles" [article]="two"></app-artickle-container-one>
+    <hr>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item"  scrollTo scrollTargetSelector="#scroll" (click)="prePage()" *ngIf="!backBool" >
+          <a class="page-link" href="#" tabindex="-1" >Назад</a>
+        </li>
+        <li class="page-item"><a class="page-link" scrollTo scrollTargetSelector="#scroll" >{{currentPage}}</a></li>
+        <li *ngIf="bool" class="page-item" scrollTo scrollTargetSelector="#scroll">
+          <a class="page-link" (click)="nextPage()"  >Далі</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <app-advertisment class="col-md-3 pr-0" ></app-advertisment>
+</div>
